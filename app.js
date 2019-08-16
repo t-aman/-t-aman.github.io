@@ -1,17 +1,22 @@
 (function ($) {
 
 	$.gCircle = function (element, options) {
-		var defaultOptions = { max: 50, radius: 3.0 };
-		var plugin = this;
+		var defaultOptions = {
+			image: 'background.jpg',
+			max: 50,
+			radius: 3.0
+		};
+		var $$ = this;
+		$$.settings = $.extend({}, defaultOptions, options);
+
 		var hotaru_array = [];
 		var ctx;
 		var stageWidth, stageHeight;
 		var scale = 0.2;
 		var img = new Image();
-		img.src = "background.jpg?" + new Date().getTime();
+			img.src = "background.jpg?" + new Date().getTime();
 
-		plugin.init = function () {
-			plugin.settings = $.extend({}, defaultOptions, options);
+		$$.init = function () {
 			initializeHotaru();
 		};
 		var initializeHotaru = function () {
@@ -36,7 +41,7 @@
 				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 			};
 
-			for (var i = 0; i < plugin.settings.max; i++) {
+			for (var i = 0; i < $$.settings.max; i++) {
 				var hotaruObj = new Hotaru();
 				ctx.fillStyle = "rgba(248, 249, 203, " + hotaruObj.alpha + ")";
 				ctx.beginPath();
@@ -58,12 +63,12 @@
 			this.step = parseInt(Math.random() * 360);
 			this.steps = parseInt(Math.random() * 10) + 1;
 			this.alpha = (Math.sin((this.step * Math.PI) / 180) + 1) / 2;
-			this.size = Math.random() * plugin.settings.radius + 1;
+			this.size = Math.random() * $$.settings.radius + 1;
 		};
 
 		var enterFrame = function () {
 			var i;
-			for (i = 0; i < plugin.settings.max; i++) {
+			for (i = 0; i < $$.settings.max; i++) {
 				hotaru_array[i].alpha = (Math.sin((hotaru_array[i].step * Math.PI) / 180) + 1) / 2;
 				hotaru_array[i].step = (hotaru_array[i].step + hotaru_array[i].steps) % 360;
 				hotaru_array[i].posX += hotaru_array[i].moveX;
@@ -79,7 +84,7 @@
 			scale = scW > scH ? scW : scH;
 			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 
-			for (i = 0; i < plugin.settings.max; i++) {
+			for (i = 0; i < $$.settings.max; i++) {
 				ctx.fillStyle = "rgba(248, 249, 203, " + hotaru_array[i].alpha + ")";
 				ctx.beginPath();
 				ctx.arc(hotaru_array[i].posX, hotaru_array[i].posY, hotaru_array[i].size, 0, Math.PI * 2, true);
@@ -93,7 +98,7 @@
 			stageHeight = window.innerHeight ? window.innerHeight : $(window).height();
 		});
 
-		plugin.init();
+		$$.init();
 	};
 
 	$.fn.firefly = function (options) {
