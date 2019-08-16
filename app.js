@@ -32,39 +32,21 @@
 			ctx = cvs.getContext("2d");
 			stageWidth = cvs.width;
 			stageHeight = cvs.height;
-
 			ctx.globalAlpha = 0.3;
 			ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
-
 			img.onload = function () {
-				//var dstWidth = this.width * scale;
-				//var dstHeight = this.height * scale
-				//ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, dstWidth, dstHeight);
-				//$("#dst").attr('src', canvas.toDataURL());
-				//}
-				//ctx.drawImage(img, 0, 0);
-				//ctx.fillRect(0, 0, stageWidth, stageHeight);
 				var scW = stageWidth / img.width;
 				var scH = stageHeight / img.height;
 				scale = scW > scH ? scW : scH;
-				ctx.drawImage(
-					img,
-					0,
-					0,
-					img.width,
-					img.height,
-					0,
-					0,
-					img.width * scale,
-					img.height * scale
-				);
+				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 			};
 
 			//生成
+/*
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
-								ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
+				ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaruObj.posX,
@@ -78,6 +60,7 @@
 				ctx.fill();
 				hotaru_array.push(hotaruObj);
 			}
+*/
 
 			setInterval(enterFrame, 30);
 		};
@@ -147,7 +130,7 @@
 
 			//再描画
 			for (i = 0; i < plugin.settings.max; i++) {
-								ctx.fillStyle = "rgba(248, 249, 163, " + hotaru_array[i].alpha + ")";
+				ctx.fillStyle = "rgba(248, 249, 163, " + hotaru_array[i].alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaru_array[i].posX,
@@ -175,7 +158,7 @@
 	$.fn.hotaru = function (options) {
 		return this.each(function () {
 			if (undefined == $(this).data("hotaru")) {
-				$(this).data("hotaru", new $.hotaru(this, options) );
+				$(this).data("hotaru", new $.hotaru(this, options));
 			}
 		});
 	};
