@@ -6,9 +6,6 @@ body {
   height: 100%;
   margin: 0 auto;
   overflow: hidden;
-/*  transition-delay: 1s;
-  transition: 0.2s all ease 0s;
-*/
 }
 .wrapper {
   position: absolute;

@@ -17,7 +17,7 @@
 			plugin.settings = $.extend({}, defaults, options);
 			initializeHotaru();
 		};
-
+alert(1);
 		var initializeHotaru = function () {
 			var cvs = document.getElementById("canvas");
 			if (!cvs || !cvs.getContext) {
@@ -30,14 +30,15 @@
 			ctx = cvs.getContext("2d");
 			stageWidth = cvs.width;
 			stageHeight = cvs.height;
-//			ctx.globalAlpha = 0.3;
 			ctx.fillStyle = "rgba(0,0,0,1)";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
+			alert(2);
 			img.onload = function () {
 				var scW = stageWidth / img.width;
 				var scH = stageHeight / img.height;
 				scale = scW > scH ? scW : scH;
 				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
+				alert(3);
 			};
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
@@ -48,6 +49,7 @@
 				ctx.fill();
 				hotaru_array.push(hotaruObj);
 			}
+			alert(4);
 			setInterval(enterFrame, 30);
 		};
 
