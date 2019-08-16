@@ -16,8 +16,6 @@ body {
   margin-left: auto;
 }
 #canvas {
-  background-image: url('./background.jpg');
-	background-size: cover;
   margin: 0;
   padding: 0;
   position: absolute;
