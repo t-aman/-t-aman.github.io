@@ -11,9 +11,12 @@ body {
 
 .wrapper {
   position: absolute;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 9999;
 }
 
 #canvas {
