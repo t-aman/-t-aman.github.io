@@ -32,8 +32,8 @@
 			ctx = cvs.getContext("2d");
 			stageWidth = cvs.width;
 			stageHeight = cvs.height;
-			ctx.globalAlpha = 0.3;
-			ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
+//			ctx.globalAlpha = 0.3;
+//			ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
 			img.onload = function () {
 				var scW = stageWidth / img.width;
