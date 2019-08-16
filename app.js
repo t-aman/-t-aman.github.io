@@ -18,30 +18,23 @@
 			initializeHotaru();
 		};
 
-		/**
-		 *
-		 */
 		var initializeHotaru = function () {
 			var cvs = document.getElementById("canvas");
 			if (!cvs || !cvs.getContext) {
 				return;
 			}
-
-			//キャンパスのサイズをウィンドウ枠に合わせる場合
 			stageWidth = window.innerWidth ? window.innerWidth : $(window).width();
 			stageHeight = window.innerHeight
 				? window.innerHeight
 				: $(window).height();
 			cvs.width = stageWidth;
 			cvs.height = stageHeight;
-
 			ctx = cvs.getContext("2d");
-
 			stageWidth = cvs.width;
 			stageHeight = cvs.height;
 
-			//ctx.globalAlpha = 0.3;
-			//ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
+			ctx.globalAlpha = 0.3;
+			ctx.fillStyle = "rgba(" + [0, 0, 255, 0.5] + ")";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
 
 			img.onload = function () {
