@@ -1,4 +1,5 @@
 (function ($) {
+
 	$.hotaru = function (element, options) {
 		var defaults = {
 			max: 60,
@@ -70,8 +71,7 @@
 			//生成
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
-//				ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
-				ctx.fillStyle = "rgba(0, 255, 0, " + hotaruObj.alpha + ")";
+								ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaruObj.posX,
@@ -154,8 +154,7 @@
 
 			//再描画
 			for (i = 0; i < plugin.settings.max; i++) {
-//				ctx.fillStyle = "rgba(248, 249, 163, " + hotaru_array[i].alpha + ")";
-				ctx.fillStyle = "rgba(0, 249, 255, " + hotaru_array[i].alpha + ")";
+								ctx.fillStyle = "rgba(248, 249, 163, " + hotaru_array[i].alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaru_array[i].posX,
@@ -183,11 +182,11 @@
 	$.fn.hotaru = function (options) {
 		return this.each(function () {
 			if (undefined == $(this).data("hotaru")) {
-				var plugin = new $.hotaru(this, options);
-				$(this).data("hotaru", plugin);
+				$(this).data("hotaru", new $.hotaru(this, options) );
 			}
 		});
 	};
+
 })(jQuery);
 
 $(function () {
