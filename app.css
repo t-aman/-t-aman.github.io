@@ -11,10 +11,10 @@ body {
 
 .wrapper {
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -80%);
+  transform: translate(-50%, -80%);
   text-align: center;
   z-index: 9999;
 }
