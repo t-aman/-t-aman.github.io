@@ -70,7 +70,8 @@
 			//生成
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
-				ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
+//				ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
+				ctx.fillStyle = "rgba(0, 255, 0, " + hotaruObj.alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaruObj.posX,
