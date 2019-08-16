@@ -10,14 +10,13 @@
 		var ctx;
 		var stageWidth, stageHeight;
 		var scale = 0.2;
-		var img = new Image();
-		img.src = "background.jpg?" + new Date().getTime();
+//		var img = new Image();
+//		img.src = "background.jpg?" + new Date().getTime();
 
 		plugin.init = function () {
 			plugin.settings = $.extend({}, defaults, options);
 			initializeHotaru();
 		};
-alert(1);
 		var initializeHotaru = function () {
 			var cvs = document.getElementById("canvas");
 			if (!cvs || !cvs.getContext) {
@@ -32,14 +31,14 @@ alert(1);
 			stageHeight = cvs.height;
 			ctx.fillStyle = "rgba(0,0,0,1)";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
-			alert(2);
-			img.onload = function () {
-				var scW = stageWidth / img.width;
-				var scH = stageHeight / img.height;
-				scale = scW > scH ? scW : scH;
-				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
-				alert(3);
-			};
+
+//			img.onload = function () {
+//				var scW = stageWidth / img.width;
+//				var scH = stageHeight / img.height;
+//				scale = scW > scH ? scW : scH;
+//				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
+//			};
+
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
 				ctx.fillStyle = "rgba(248, 249, 203, " + hotaruObj.alpha + ")";
@@ -49,7 +48,6 @@ alert(1);
 				ctx.fill();
 				hotaru_array.push(hotaruObj);
 			}
-			alert(4);
 			setInterval(enterFrame, 30);
 		};
 
@@ -79,10 +77,10 @@ alert(1);
 				if (hotaru_array[i].posY > stageHeight) hotaru_array[i].posY = 0;
 			}
 			ctx.fillRect(0, 0, stageWidth, stageHeight);
-			var scW = stageWidth / img.width;
-			var scH = stageHeight / img.height;
-			scale = scW > scH ? scW : scH;
-			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
+//			var scW = stageWidth / img.width;
+//			var scH = stageHeight / img.height;
+//			scale = scW > scH ? scW : scH;
+//			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 
 			for (i = 0; i < plugin.settings.max; i++) {
 				ctx.fillStyle = "rgba(248, 249, 203, " + hotaru_array[i].alpha + ")";
