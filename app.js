@@ -154,7 +154,7 @@
 			//再描画
 			for (i = 0; i < plugin.settings.max; i++) {
 //				ctx.fillStyle = "rgba(248, 249, 163, " + hotaru_array[i].alpha + ")";
-				ctx.fillStyle = "rgba(200, 249, 255, " + hotaru_array[i].alpha + ")";
+				ctx.fillStyle = "rgba(0, 249, 255, " + hotaru_array[i].alpha + ")";
 				ctx.beginPath();
 				ctx.arc(
 					hotaru_array[i].posX,
