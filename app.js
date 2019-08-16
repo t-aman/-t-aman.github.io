@@ -1,6 +1,6 @@
 (function ($) {
 
-	$.hotaru = function (element, options) {
+	$.gCircle = function (element, options) {
 		var defaultOptions = { max: 50, radius: 3.0 };
 		var plugin = this;
 		var hotaru_array = [];
