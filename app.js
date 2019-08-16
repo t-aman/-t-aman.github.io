@@ -105,6 +105,5 @@
 $(function () {
 
 	$("#canvas").firefly();
-	alert(123);
 
 });
