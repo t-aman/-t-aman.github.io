@@ -1,13 +1,13 @@
 (function ($) {
 
 	$.gCircle = function (element, options) {
+		var $$ = this;
 		var defaultOptions = {
 			image: 'background.jpg',
 			color: '248, 249, 203',
 			max: 50,
 			radius: 3.0
 		};
-		var $$ = this;
 		$$.settings = $.extend({}, defaultOptions, options);
 		var ctx;
 		var arrCircle = [];
@@ -16,47 +16,38 @@
 		img.src = $$.settings.image + "?" + new Date().getTime();
 
 		$$.init = function () {
-			initializeHotaru();
-		};
-		var initializeHotaru = function () {
 			var cvs = document.getElementById("canvas");
-			if (!cvs || !cvs.getContext) {
-				return;
-			}
-			scWidth = window.innerWidth ? window.innerWidth : $(window).width();
-			scHeight = window.innerHeight ? window.innerHeight : $(window).height();
-			cvs.width = scWidth;
-			cvs.height = scHeight;
+			if (!cvs || !cvs.getContext) return;
+			cvs.width = window.innerWidth ? window.innerWidth : $(window).width();
+			cvs.height = window.innerHeight ? window.innerHeight : $(window).height();
 			ctx = cvs.getContext("2d");
-			scWidth = cvs.width;
-			scHeight = cvs.height;
 			ctx.fillStyle = "rgba(0,0,0,1)";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
-
+			scWidth = cvs.width;
+			scHeight = cvs.height;
 			img.onload = function () {
 				var scW = scWidth / img.width;
 				var scH = scHeight / img.height;
 				scale = scW > scH ? scW : scH;
 				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 			};
-
 			for (var i = 0; i < $$.settings.max; i++) {
-				var hotaruObj = new Hotaru();
-				ctx.fillStyle = "rgba(248, 249, 203, " + hotaruObj.alpha + ")";
+				var obj = new Circle();
+				ctx.fillStyle = "rgba(" + $$.settings.color + ", " + obj.alpha + ")";
 				ctx.beginPath();
-				ctx.arc(hotaruObj.posX, hotaruObj.posY, hotaruObj.size, 0, Math.PI * 2, true);
+				ctx.arc(obj.posX, obj.posY, obj.size, 0, Math.PI * 2, true);
 				ctx.closePath();
 				ctx.fill();
-				arrCircle.push(hotaruObj);
+				arrCircle.push(obj);
 			}
 			setInterval(enterFrame, 30);
 		};
 
-		var Hotaru = function () {
-			this.posX = Math.random() * scWidth;
-			this.posY = Math.random() * scHeight;
+		var Circle = function () {
 			var angle = Math.random() * 360;
 			var speed = Math.random() + 0.01;
+			this.posX = Math.random() * scWidth;
+			this.posY = Math.random() * scHeight;
 			this.moveX = Math.cos((angle * Math.PI) / 180.0) * speed;
 			this.moveY = Math.sin((angle * Math.PI) / 180.0) * speed;
 			this.step = parseInt(Math.random() * 360);
@@ -84,7 +75,7 @@
 			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 
 			for (i = 0; i < $$.settings.max; i++) {
-				ctx.fillStyle = "rgba(248, 249, 203, " + arrCircle[i].alpha + ")";
+				ctx.fillStyle = "rgba(" + $$.settings.color + ", " + arrCircle[i].alpha + ")";
 				ctx.beginPath();
 				ctx.arc(arrCircle[i].posX, arrCircle[i].posY, arrCircle[i].size, 0, Math.PI * 2, true);
 				ctx.closePath();
@@ -112,5 +103,5 @@
 
 $(function () {
 	$("#canvas").firefly();
-	alert(789);
+	alert(11);
 });
