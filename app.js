@@ -5,11 +5,9 @@
 			radius: 1.5
 		};
 		var plugin = this;
-
 		var hotaru_array = [];
 		var ctx;
 		var stageWidth, stageHeight;
-
 		var scale = 0.2;
 		var img = new Image();
 		img.src = "background.jpg?" + new Date().getTime();
