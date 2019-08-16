@@ -1,20 +1,17 @@
 (function ($) {
 
 	$.hotaru = function (element, options) {
-		var defaults = {
-			max: 60,
-			radius: 1.5
-		};
+		var defaultOptions = { max: 50, radius: 3.0 };
 		var plugin = this;
 		var hotaru_array = [];
 		var ctx;
 		var stageWidth, stageHeight;
 		var scale = 0.2;
-//		var img = new Image();
-//		img.src = "background.jpg?" + new Date().getTime();
+		var img = new Image();
+		img.src = "background.jpg?" + new Date().getTime();
 
 		plugin.init = function () {
-			plugin.settings = $.extend({}, defaults, options);
+			plugin.settings = $.extend({}, defaultOptions, options);
 			initializeHotaru();
 		};
 		var initializeHotaru = function () {
@@ -32,12 +29,12 @@
 			ctx.fillStyle = "rgba(0,0,0,1)";
 			ctx.fillRect(0, 0, cvs.width, cvs.height);
 
-//			img.onload = function () {
-//				var scW = stageWidth / img.width;
-//				var scH = stageHeight / img.height;
-//				scale = scW > scH ? scW : scH;
-//				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
-//			};
+			img.onload = function () {
+				var scW = stageWidth / img.width;
+				var scH = stageHeight / img.height;
+				scale = scW > scH ? scW : scH;
+				ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
+			};
 
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
@@ -77,22 +74,15 @@
 				if (hotaru_array[i].posY > stageHeight) hotaru_array[i].posY = 0;
 			}
 			ctx.fillRect(0, 0, stageWidth, stageHeight);
-//			var scW = stageWidth / img.width;
-//			var scH = stageHeight / img.height;
-//			scale = scW > scH ? scW : scH;
-//			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
+			var scW = stageWidth / img.width;
+			var scH = stageHeight / img.height;
+			scale = scW > scH ? scW : scH;
+			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
 
 			for (i = 0; i < plugin.settings.max; i++) {
 				ctx.fillStyle = "rgba(248, 249, 203, " + hotaru_array[i].alpha + ")";
 				ctx.beginPath();
-				ctx.arc(
-					hotaru_array[i].posX,
-					hotaru_array[i].posY,
-					hotaru_array[i].size,
-					0,
-					Math.PI * 2,
-					true
-				);
+				ctx.arc(hotaru_array[i].posX, hotaru_array[i].posY, hotaru_array[i].size, 0, Math.PI * 2, true);
 				ctx.closePath();
 				ctx.fill();
 			}
@@ -100,15 +90,13 @@
 
 		$(window).resize(function () {
 			stageWidth = window.innerWidth ? window.innerWidth : $(window).width();
-			stageHeight = window.innerHeight
-				? window.innerHeight
-				: $(window).height();
+			stageHeight = window.innerHeight ? window.innerHeight : $(window).height();
 		});
 
 		plugin.init();
 	};
 
-	$.fn.hotaru = function (options) {
+	$.fn.hotarus = function (options) {
 		return this.each(function () {
 			if (undefined == $(this).data("hotaru")) {
 				$(this).data("hotaru", new $.hotaru(this, options));
@@ -119,5 +107,6 @@
 })(jQuery);
 
 $(function () {
-	$("#canvas").hotaru({ max: 50, radius: 3.0 });
+	$("#canvas").hotarus();
+	alert(123);
 });
