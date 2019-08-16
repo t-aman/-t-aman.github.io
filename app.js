@@ -96,10 +96,10 @@
 		plugin.init();
 	};
 
-	$.fn.hotarus = function (options) {
+	$.fn.firefly = function (options) {
 		return this.each(function () {
-			if (undefined == $(this).data("hotaru")) {
-				$(this).data("hotaru", new $.hotaru(this, options));
+			if (undefined == $(this).data("gCircle")) {
+				$(this).data("gCircle", new $.gCircle(this, options));
 			}
 		});
 	};
@@ -107,6 +107,6 @@
 })(jQuery);
 
 $(function () {
-	$("#canvas").hotarus();
-	alert(123);
+	$("#canvas").firefly();
+	alert(456);
 });
