@@ -1,22 +1,24 @@
 @charset "UTF-8";
 body {
   background-color: #000;
-  text-shadow: 0 0 10px #00f100, 0 0 30px #00c000, 0 0 40px #0c0, 0 0 40px #0c0;
-  color: #004c1c;
+  color: #ffffff;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  transition-delay: 1s;
+  transition: 0.2s all ease 0s;
 }
-#wrapper {
+.wrapper {
   position: absolute;
-  margin-left: 60px;
-  z-index: 9998;
-}
-a {
-  position: absolute;
-  z-index: 9999;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }
 #canvas {
   margin: 0;
   padding: 0;
-  background-image: url('./background.jpg');
+  background-image: url("./background.jpg");
   background-size: cover;
   position: absolute;
   width: 100%;
