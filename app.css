@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 body {
   background-color: #000;
   color: #ffffff;
@@ -7,16 +8,15 @@ body {
   margin: 0 auto;
   overflow: hidden;
 }
+
 .wrapper {
   position: absolute;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
-#canvas {
-	background-image: url('./background.jpg');
-	background-size: cover;
 
+#canvas {
   margin: 0;
   padding: 0;
   position: absolute;

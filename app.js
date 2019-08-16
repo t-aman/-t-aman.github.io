@@ -1,13 +1,15 @@
 (function ($) {
 
 	$.gCircle = function (element, options) {
-		var $$ = this;
+
 		var defaultOptions = {
 			image: 'background.jpg',
 			color: '248, 249, 203',
 			max: 50,
-			radius: 3.0
+			radius: 3.0,
+			interval:50
 		};
+		var $$ = this;
 		$$.settings = $.extend({}, defaultOptions, options);
 		var ctx;
 		var arrCircle = [];
@@ -40,23 +42,10 @@
 				ctx.fill();
 				arrCircle.push(obj);
 			}
-			setInterval(enterFrame, 30);
+			setInterval(showCircle, $$.settings.interval);
 		};
 
-		var Circle = function () {
-			var angle = Math.random() * 360;
-			var speed = Math.random() + 0.01;
-			this.posX = Math.random() * scWidth;
-			this.posY = Math.random() * scHeight;
-			this.moveX = Math.cos((angle * Math.PI) / 180.0) * speed;
-			this.moveY = Math.sin((angle * Math.PI) / 180.0) * speed;
-			this.step = parseInt(Math.random() * 360);
-			this.steps = parseInt(Math.random() * 10) + 1;
-			this.alpha = (Math.sin((this.step * Math.PI) / 180) + 1) / 2;
-			this.size = Math.random() * $$.settings.radius + 1;
-		};
-
-		var enterFrame = function () {
+		var showCircle = function () {
 			var i;
 			for (i = 0; i < $$.settings.max; i++) {
 				arrCircle[i].alpha = (Math.sin((arrCircle[i].step * Math.PI) / 180) + 1) / 2;
@@ -73,7 +62,6 @@
 			var scH = scHeight / img.height;
 			scale = scW > scH ? scW : scH;
 			ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * scale, img.height * scale);
-
 			for (i = 0; i < $$.settings.max; i++) {
 				ctx.fillStyle = "rgba(" + $$.settings.color + ", " + arrCircle[i].alpha + ")";
 				ctx.beginPath();
@@ -81,6 +69,19 @@
 				ctx.closePath();
 				ctx.fill();
 			}
+		};
+
+		var Circle = function () {
+			var angle = Math.random() * 360;
+			var speed = Math.random() + 0.01;
+			this.posX = Math.random() * scWidth;
+			this.posY = Math.random() * scHeight;
+			this.moveX = Math.cos((angle * Math.PI) / 180.0) * speed;
+			this.moveY = Math.sin((angle * Math.PI) / 180.0) * speed;
+			this.step = parseInt(Math.random() * 360);
+			this.steps = parseInt(Math.random() * 10) + 1;
+			this.alpha = (Math.sin((this.step * Math.PI) / 180) + 1) / 2;
+			this.size = Math.random() * $$.settings.radius + 1;
 		};
 
 		$(window).resize(function () {
@@ -102,6 +103,7 @@
 })(jQuery);
 
 $(function () {
+
 	$("#canvas").firefly();
-	alert(11);
+
 });
