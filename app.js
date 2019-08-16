@@ -43,7 +43,7 @@
 			};
 
 			//生成
-/*
+
 			for (var i = 0; i < plugin.settings.max; i++) {
 				var hotaruObj = new Hotaru();
 				ctx.fillStyle = "rgba(248, 249, 163, " + hotaruObj.alpha + ")";
@@ -60,7 +60,7 @@
 				ctx.fill();
 				hotaru_array.push(hotaruObj);
 			}
-*/
+
 
 			setInterval(enterFrame, 30);
 		};
